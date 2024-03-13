@@ -16,7 +16,7 @@ void General::Core::run()
 {
     ESP_LOGI(TAG, "LOOP");
     int random = esp_random();
-    ESP_LOGI(TAG, "RAMDOM NUMBER %d", random);
+    ESP_LOGI(TAG, "RANDOM NUMBER %d", random);
     int positiveNumber = abs(random);
     ESP_LOGI(TAG, "POSITIVE NUMBER %d", positiveNumber);
     int limitedNumber = (positiveNumber % 6) + 1;
