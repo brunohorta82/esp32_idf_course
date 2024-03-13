@@ -1,0 +1,70 @@
+menu "CoreX Configuration" 
+   menu "OTA"
+      config OTA
+      bool "Active"
+      default y 
+   endmenu
+
+      choice COMUNICATION_MODE
+         prompt "Comunication Mode"
+         default WIFI_ONLY
+         config NONE
+            bool "None"
+         config WIFI_ONLY
+            bool "WiFi Only"
+         config LORA_ONLY
+            bool "LoRa Only"
+         config WIFI_AND_LORA
+            bool "Wifi and Lora"
+      endchoice
+      config WIFI_MAX_RETRIES
+         int "MAX Wi-Fi Connection Retries"
+         default 5
+         depends on WIFI_ONLY || WIFI_AND_LORA
+
+   menu "MQTT Configuration"
+      config MQTT
+      bool "Active"
+      default y 
+      config BROKER_URL
+      string "Broker MQTT"
+      default "mqtt://135.181.146.93"
+      depends on MQTT
+      config MQTT_KEEPALIVE
+      int "Keepalive (seconds)"
+      default 5
+      depends on MQTT
+   endmenu  
+ 
+   menu "Device Provision Configuration"
+      choice SMARTCONFIG_MODE
+         prompt "Smartconfig"
+         default SMARTCONFIG_BLE
+         config SMARTCONFIG_ESPTOUCH
+            bool "ESPTOUCH"
+         config SMARTCONFIG_BLE
+            bool "BLE"
+      endchoice
+      config SMARTCONFIG_BLE_PIN
+         string "Smartconfig BLE Pin"
+         default "pro12345"  
+         depends on SMARTCONFIG_BLE
+      config SMARTCONFIG_AUTO_STOP
+         int "Smartconfig Auto Stop (ms)"
+         default 1000
+         depends on SMARTCONFIG_BLE     
+      config SMARTCONFIG_TIMEOUT
+         int "Smartconfig timeout (seconds)"
+         default 60        
+         depends on SMARTCONFIG_ESPTOUCH
+   endmenu
+   menu "Low Power"
+      config LOW_POWER_SLEEP
+      bool "Active"
+      default n 
+      config WAKEUP_TIME_SEC
+      int "Wakeup time (seconds)"
+      default 60 
+      depends on LOW_POWER_SLEEP
+   endmenu  
+endmenu

@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.8)
+set(CMAKE_CXX_STANDARD 17)
+set(EXTRA_COMPONENT_DIRS components)
+set(PROJECT_VER "1.0")
+include($ENV{IDF_PATH}/tools/cmake/project.cmake)
+project(IDF-LOGGING)
