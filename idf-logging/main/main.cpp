@@ -1,5 +1,7 @@
 #include "main.hpp"
+//INCLUDE LOG LIB
 #include <esp_log.h>
+//DEFINE TAGS
 #define TAG "LOGGING"
 #define OTHER_TAG "OTHER TAG"
 
