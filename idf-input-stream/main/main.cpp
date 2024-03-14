@@ -35,6 +35,7 @@ void General::Core::run()
     {
         std::cout << "Read: '" << s << "'\nESP32# ";
     }
+
     std::cout << "Bye bye!" << s;
 }
 
